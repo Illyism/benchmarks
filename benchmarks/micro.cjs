@@ -1,9 +1,10 @@
 'use strict'
 
-const micro = require('micro')
+const { serve } = require('micro')
+const http = require('http')
 
-const server = micro(async function (req, res) {
+const server = new http.Server(serve(async function (req, res) {
   return { hello: 'world' }
-})
+}));
 
 server.listen(3000)
